@@ -1,0 +1,8 @@
+tox
+sphinx
+pbr
+recommonmark
+hieroglyph
+boto
+boto3
+redis
