@@ -6,3 +6,4 @@ hieroglyph
 boto
 boto3
 redis
+flask
