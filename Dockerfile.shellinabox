@@ -25,6 +25,6 @@ USER 1000
 WORKDIR /home/linux
 
 #USER 0
-CMD /usr/bin/shellinabox -t
+CMD /usr/bin/shellinaboxd -t
 # expose shellinabox, all other services are internally
 EXPOSE 4200
