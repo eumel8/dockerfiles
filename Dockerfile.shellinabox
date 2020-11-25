@@ -4,9 +4,6 @@ FROM ubuntu:20.04
 ENV DEBIAN_FRONTEND=noninteractive
 ENV TERM=linux
 
-# entrypoint with program starts
-#COPY aio/entrypoint.sh /entrypoint.sh
-
 # Upgrade system & install packages
 RUN apt-get update && apt-get -y upgrade
 RUN apt-get install -y -o Dpkg::Options::=--force-confdef -o Dpkg::Options::=--force-confnew vim-tiny bash curl wget git rsyslog bsd-mailx gettext-base bind9-host cron shellinabox alpine telnet cron golang
@@ -24,10 +21,7 @@ RUN useradd -u 1000 -g 1000 -m -s /bin/bash linux;echo linux:linux | chpasswd -c
 
 # start shellinabox as root
 # https://github.com/shellinabox/shellinabox/issues/458
-USER 0
 CMD /usr/bin/shellinaboxd -tv
 # expose shellinabox, all other services are internally
 EXPOSE 4200
-# Run container with uid 1000
-USER 1000
 WORKDIR /home/linux
