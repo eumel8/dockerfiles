@@ -21,10 +21,13 @@ RUN sed -i '/imklog/s/^module/# /' /etc/rsyslog.conf
 # install the default user and prepare home dir
 RUN groupadd -g 1000 linux
 RUN useradd -u 1000 -g 1000 -m -s /bin/bash linux;echo linux:linux | chpasswd -c SHA512
-USER 1000
-WORKDIR /home/linux
 
-#USER 0
-CMD /usr/bin/shellinaboxd -t
+# start shellinabox as root
+# https://github.com/shellinabox/shellinabox/issues/458
+USER 0
+CMD /usr/bin/shellinaboxd -tv
 # expose shellinabox, all other services are internally
 EXPOSE 4200
+# Run container with uid 1000
+USER 1000
+WORKDIR /home/linux
