@@ -25,3 +25,7 @@ CMD /usr/bin/shellinaboxd -tv
 # expose shellinabox, all other services are internally
 EXPOSE 4200
 WORKDIR /home/linux
+
+RUN echo "export KUBERNETES_SERVICE_HOST=10.43.0.1" >> .bashrc
+RUN echo "export KUBERNETES_SERVICE_PORT_HTTPS=443" >> .bashrc
+RUN echo "export KUBERNETES_SERVICE_PORT=443" >> .bashrc
